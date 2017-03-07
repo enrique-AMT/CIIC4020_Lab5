@@ -21,15 +21,16 @@ public class SymmetricStringAnalyzer {
 	                 return false; 
 	               else {
 	                 char t = stack.top(); 
-	                 if (t == Character.toUpperCase(c))
-	                    stack.pop();  
+	                 if (t == Character.toUpperCase(c)){
+	                    stack.pop();                 	
+	                 }
 	                 else 
 	                    return false; 
 	                }
 	            else 
-	                return false; 
+	                return false;         
 	    } 
-	    return true; 
+	    return stack.isEmpty();
 	}
 	
 	public String toString() { 
@@ -39,9 +40,24 @@ public class SymmetricStringAnalyzer {
 	public String parenthesizedExpression() 
 	throws StringIsNotSymmetricException 
 	{
-		// ADD MISSING CODE
-		
-		return null;  // need to change if necessary....
+		String str="";
+		Character charac;
+		if(!isValidContent()){
+			throw new StringIsNotSymmetricException("isValidContent: not a symmetric string");
+			
+		}
+		else{
+			for(int i=0; i<s.length();i++){
+				charac = s.charAt(i);
+				if(Character.isUpperCase(charac)){
+					str = str +" "+ "<" + charac;
+				}
+				else{
+					str= str+" "+charac+ ">";
+				}
+		}
+		return str;
 	}
 
+	}
 }
